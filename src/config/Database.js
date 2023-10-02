@@ -1,13 +1,14 @@
-const Sequelize = require('sequelize');
-const dotenv = require('dotenv');
-dotenv.config();
+// const Sequelize = require('sequelize');
+// const dotenv = require('dotenv');
+import "dotenv/config";
+import { Sequelize } from "sequelize";
 
 const db = new Sequelize(
-    process.env.DATABASE_NAME,
-    process.env.DATABASE_USERNAME,
-    process.env.DATABASE_PASSWORD,
+  "db_cp27",
+  "root",
+  "",
   {
-    host:   process.env.DATABASE_HOST,
+    host: "localhost",
     dialect: "mysql",
   }
 );
@@ -18,4 +19,5 @@ db.authenticate()
     console.log(`Unable to connect to database: ${error}`);
   });
 
-module.exports = db;
+// module.exports = db;
+export default db;

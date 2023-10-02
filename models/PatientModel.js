@@ -1,4 +1,5 @@
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
+import { DataTypes } from 'sequelize';
 import db from '../src/config/Database.js';
 
 const Patient = db.define("patients", {
@@ -14,14 +15,18 @@ const Patient = db.define("patients", {
     type: DataTypes.STRING,
   },
   gender: {
-    type: DataTypes.INT,
+    type: DataTypes.INTEGER,
   },
   date_of_birth: {
     type: DataTypes.DATE,
   },
-});
+},
+{
+    timestamps: false
+} );
 
-module.exports = Patient;
+// module.exports = Patient;
+export default Patient;
 
 // If table "Patients" doesn't exist, this function creates it
 (async () => {
