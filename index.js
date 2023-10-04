@@ -7,6 +7,8 @@ import cors from "cors";
 // Import Router
 import ScheduleRoute from "./routes/ScheduleRoute.js";
 import PatientRoute from "./routes/PatientRoute.js";
+import db from './src/config/Database.js';
+
 
 dotenv.config();
 
@@ -112,6 +114,13 @@ app.get('/receipt/:id', (req, res) => {
 });
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
+db.sync({alter: true})
+  .then(() => {
+    console.log("Database connected");
+    app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
+  })
+  .catch((error) => {
+    console.log(`Unable to connect to database: ${error}`);
+  });

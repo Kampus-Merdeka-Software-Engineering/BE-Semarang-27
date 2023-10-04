@@ -34,3 +34,13 @@ export const getPatientById = async (req, res) => {
   }
 };
 
+export async function getPatientIdByName(name) {
+  try {
+    const user = await Patient.findOne({
+      where: { patient_name: name },
+    });
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}

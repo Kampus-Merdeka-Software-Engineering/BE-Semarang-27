@@ -30,6 +30,6 @@ const Appointment = db.define("appointments", {
 export default Appointment;
 
 // If table "appointments" doesn't exist, this function creates it
-(async () => {
-    await db.sync();
-})();
+// (async () => {
+//     await db.sync();
+// })();

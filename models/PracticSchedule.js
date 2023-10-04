@@ -33,6 +33,6 @@ const Schedule = db.define("practic_schedules", {
 export default Schedule;
 
 // If table "practic_schedules" doesn't exist, this function creates it
-(async () => {
-    await db.sync();
-})();
+// (async () => {
+//     await db.sync();
+// })();
