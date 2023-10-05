@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import db from '../src/config/Database.js';
 
-const Schedule = db.define("practic_schedules", {
+const Schedule = db.define(`practic_schedules`, {
   schedule_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
