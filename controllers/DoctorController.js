@@ -60,12 +60,12 @@ export const getAllDoctorsBySpeciality = async (req, res) => {
 export const getScheduleByDoctorId = async (req, res) => {
   try {
     const scheduleDay = await db.query(
-      `SELECT DISTINCT d.doctor_name, p.day FROM practic_schedules p JOIN doctors D ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
+      `SELECT DISTINCT d.doctor_name, p.day FROM schedules p JOIN doctors D ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
     );
 
 
     const scheduleTime = await db.query(
-      `SELECT DISTINCT d.doctor_name, p.begin_hour, p.begin_minute, p.finish_hour, p.finish_minute FROM practic_schedules p JOIN doctors D ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
+      `SELECT DISTINCT d.doctor_name, p.begin_hour, p.begin_minute, p.finish_hour, p.finish_minute FROM schedules p JOIN doctors D ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
     )
 
     const data = {
@@ -111,8 +111,8 @@ export const getAppointmentsByDoctorId = async (req, res) => {
       begin_hour, 
       finish_hour 
       FROM appointments 
-      JOIN practic_schedules ON appointments.schedule_id = practic_schedules.schedule_id
-      WHERE practic_schedules.doctor_id = ${req.params.id}`);
+      JOIN schedules ON appointments.schedule_id = schedules.schedule_id
+      WHERE schedules.doctor_id = ${req.params.id}`);
     const data = {
       doctor_id: doctor[0][0].doctor_id,
       doctor_name: doctor[0][0].doctor_name,
@@ -142,7 +142,7 @@ export const getReceiptById = async (req, res) => {
       a.reason 
       FROM appointments a 
       JOIN patients p ON a.patient_id = p.patient_id 
-      JOIN practic_schedules s ON a.schedule_id = s.schedule_id 
+      JOIN schedules s ON a.schedule_id = s.schedule_id 
       JOIN doctors d ON s.doctor_id = d.doctor_id 
       JOIN specialities sp ON d.speciality_id = sp.speciality_id
       WHERE a.appointment_id = ${req.params.appointment_id};

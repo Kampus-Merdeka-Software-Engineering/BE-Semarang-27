@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import db from '../src/config/Database.js';
 
-const Schedule = db.define(`practic_schedules`, {
+const Schedule = db.define("schedules", {
   schedule_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -32,7 +32,7 @@ const Schedule = db.define(`practic_schedules`, {
 
 export default Schedule;
 
-// If table "practic_schedules" doesn't exist, this function creates it
+// If table "schedules" doesn't exist, this function creates it
 // (async () => {
 //     await db.sync();
 // })();

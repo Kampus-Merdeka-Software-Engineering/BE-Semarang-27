@@ -1,5 +1,4 @@
 import Patient from "../models/PatientModel.js";
-import db from "../src/config/Database.js";
 
 export const signUpPatient = async (req, res) => {
   try {
@@ -16,9 +15,6 @@ export const signUpPatient = async (req, res) => {
 export const getAllPatients = async (req, res) => {
   try {
     const patients = await Patient.findAll();
-    // const patients = await db.query(
-    //   `SELECT * FROM patients`
-    // );
     res.status(200).json(patients);
   } catch (error) {
     res.send(error.message);
