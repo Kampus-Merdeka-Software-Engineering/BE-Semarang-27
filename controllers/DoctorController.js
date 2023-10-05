@@ -61,12 +61,12 @@ export const getAllDoctorsBySpeciality = async (req, res) => {
 export const getScheduleByDoctorId = async (req, res) => {
   try {
     const scheduleDay = await db.query(
-      `SELECT DISTINCT d.doctor_name, p.day FROM schedules p JOIN doctors D ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
+      `SELECT DISTINCT d.doctor_name, p.day FROM schedules p JOIN doctors d ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
     );
 
 
     const scheduleTime = await db.query(
-      `SELECT DISTINCT d.doctor_name, p.begin_hour, p.begin_minute, p.finish_hour, p.finish_minute FROM schedules p JOIN doctors D ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
+      `SELECT DISTINCT d.doctor_name, p.begin_hour, p.begin_minute, p.finish_hour, p.finish_minute FROM schedules p JOIN doctors d ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
     )
 
     const data = {
