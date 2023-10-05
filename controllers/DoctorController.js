@@ -1,5 +1,6 @@
 import Doctor from "../models/DoctorModel.js";
 import Speciality from "../models/SpecialityModel.js";
+import Schedule from "../models/ScheduleModel.js";
 import db from "../src/config/Database.js";
 
 export const getAllSpecialities = async (req, res) => {
