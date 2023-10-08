@@ -61,7 +61,7 @@ export const getAllDoctorsBySpeciality = async (req, res) => {
 export const getScheduleByDoctorId = async (req, res) => {
   try {
     const scheduleDay = await db.query(
-      `SELECT DISTINCT d.doctor_name, p.day FROM schedules p JOIN doctors d ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
+      `SELECT DISTINCT d.doctor_name, d.image_path, p.day FROM schedules p JOIN doctors d ON d.doctor_id = p.doctor_id WHERE d.doctor_id = ${req.params.id}`
     );
 
 
@@ -72,6 +72,7 @@ export const getScheduleByDoctorId = async (req, res) => {
     const data = {
       doctor_id: parseInt(req.params.id),
       doctor_name: scheduleDay[0][0].doctor_name,
+      doctor_image: scheduleDay[0][0].image_path,
       day: [
         scheduleDay[0][0].day,
         scheduleDay[0][1].day,
