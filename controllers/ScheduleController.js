@@ -33,7 +33,7 @@ export const bookAppointment = async (req, res) => {
       `SELECT appointment_id FROM appointments WHERE patient_id = ${data.patient_id} AND booking_date = '${data.booking_date}' AND reason = '${data.reason}' LIMIT 1`
     )
     const appointment_id = appointmentResult[0][0].appointment_id
-    
+
     res.status(200).json({
       appointment_id,
       data
