@@ -14,12 +14,19 @@ Repository ini merupakan hasil pengembangan backend untuk program **Kampus Merde
 ## 📁 Struktur Direktori
 
 ├── controllers/ # Berisi logic untuk masing-masing endpoint
+
 ├── models/ # Berisi definisi model database
+
 ├── routes/ # Berisi definisi endpoint API
+
 ├── src/config/ # Konfigurasi koneksi database
+
 ├── index.js # Entry point server
+
 ├── package.json # Konfigurasi package npm
+
 ├── .env # File konfigurasi environment (tidak di-push ke GitHub)
+
 └── README.md # Dokumentasi proyek ini
 
 ## 🗃️ ERD (Entity Relationship Diagram)
